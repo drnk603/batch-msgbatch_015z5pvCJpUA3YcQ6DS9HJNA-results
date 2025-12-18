@@ -239,7 +239,7 @@
             entries.forEach(function(entry) {
                 if (entry.isIntersecting && animated.indexOf(entry.target) === -1) {
                     animated.push(entry.target);
-                    var text = entry.target.textContent.replace(/D/g, '');
+                    var text = entry.target.textContent.replace(/\D/g, '');
                     var target = parseInt(text, 10);
                     if (!isNaN(target)) {
                         entry.target.textContent = '0+';
@@ -406,32 +406,32 @@
         var validators = {
             name: {
                 test: function(value) {
-                    return /^[a-zA-ZÀ-ÿs-']{2,50}$/.test(value);
+                    return /^[a-zA-ZÀ-ÿ\s-']{2,50}$/.test(value);
                 },
                 message: 'Bitte geben Sie einen gültigen Namen ein (2-50 Zeichen, nur Buchstaben)'
             },
             firstName: {
                 test: function(value) {
-                    return /^[a-zA-ZÀ-ÿs-']{2,50}$/.test(value);
+                    return /^[a-zA-ZÀ-ÿ\s-']{2,50}$/.test(value);
                 },
                 message: 'Bitte geben Sie einen gültigen Vornamen ein'
             },
             lastName: {
                 test: function(value) {
-                    return /^[a-zA-ZÀ-ÿs-']{2,50}$/.test(value);
+                    return /^[a-zA-ZÀ-ÿ\s-']{2,50}$/.test(value);
                 },
                 message: 'Bitte geben Sie einen gültigen Nachnamen ein'
             },
             email: {
                 test: function(value) {
-                    return /^[^s@]+@[^s@]+.[^s@]+$/.test(value);
+                    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
                 },
                 message: 'Bitte geben Sie eine gültige E-Mail-Adresse ein'
             },
             phone: {
                 test: function(value) {
                     if (!value) return true;
-                    return /^[ds+-()]{10,20}$/.test(value);
+                    return /^[\d\s+\-()]{10,20}$/.test(value);
                 },
                 message: 'Bitte geben Sie eine gültige Telefonnummer ein'
             },
